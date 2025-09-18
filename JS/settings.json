@@ -1,0 +1,8 @@
+// settings.json
+{
+    "editor.formatOnType": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "liveShare.featureSet": "stable",
+    "liveShare.guestReadOnly": true
+}
