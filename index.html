@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmos Prova</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./CSS/animations.css">
+    <link rel="stylesheet" href="./CSS/index.css">
 </head>
 
-<body class="p-4">
+<body class="body p-4">
     
-    <div class="pb-10 relative h-screen flex flex-col items-center justify-center">
+    <div class="pb-10 relative h-[200px] flex flex-col items-center justify-center">
         <!-- <h1 class="text-center text-[3.85rem] font-bold text-black absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1> -->
 
         <h1 class="text-center text-[3.56rem] font-extrabold text-black  absolute z-1 top-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
@@ -17,31 +19,104 @@
         <h1 class="text-center text-[3.85rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
         
         -->
-        <h1 class="text-center text-[3.709rem] font-bold text-red-500 absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
-        
-        <h2 class="font-bold">O que é um array?</h2>
-        <p>Em JavaScript, uma "array" é como uma caixa de lápis, e cada lápis é um "elemento" dentro dela.</p>
-        
+        <h1 class="text-center text-[3.709rem] leading-[85px] font-bold text-red-500 absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
     </div>
 
-<div id="forEach" class="p-4 m-5">
-<div id="forEach" class="p-4 m-5">
-        <h3>ForEach</h3>
-  <p>Imagina que você quer dar um "oi" para cada um dos seus lápis. O forEach() faz exatamente isso! Ele pega cada lápis, um por um, e faz alguma coisa com ele.</p>
-        <button id="forEachbutton">Testar</button>
-        <button id="mapbutton">Testar</button>
-        <button id="filterbutton">Testar</button>
-        <button id="findbutton">Testar</button>
-        <button id="findIndexbutton">Testar</button>
-        <button id="somebutton">Testar</button>
-        <button id="everybutton">Testar</button>
-        <button id="reducebutton">Testar</button>
-        <button id="forbutton">Testar</button>
-        <button id="entriesbutton">Testar</button>
-        <button id="whilebutton">Testar</button>
+    <div id="container" style="display: flex">
+        <div id="1" class="forEach p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5 " style="display: block; margin-inline: auto;">
+            <h2 class="font-bold">O que é um array?</h2>
+            <p>Em JavaScript, uma "array" é como uma caixa de lápis, e cada lápis é um "elemento" dentro dela.</p>
+
+            <h3>ForEach</h3>
+            <p>Imagina que você quer dar um "oi" para cada um dos seus lápis. O forEach() faz exatamente isso! Ele pega cada lápis, um por um, e faz alguma coisa com ele.</p><br>
+            <div class="example min-w-[500px]">
+                <p><span class="font-semibold">Exemplo:</span><br>array.forEach(elem => {console.log(`Olá, ${elem}!`)</p>
+            </div> <br>
+            <input type="text" placeholder="Experimente!" class="p-2 outline outline-black rounded-lg mr-3" id="inputForEach">
+            <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputForEach()">Adicionar ao array</button>
+            <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mb-4" onclick="forEach()">Testar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+            <p id="arrayForEach">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída</span></p><br>
+                <p id="outputForEach"></p> 
+            </div>
+        </div>
+
+
+
+        <div id="2" class="map p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Map</h2>
+            <p>O map() é como uma máquina de fazer cópias especiais dos seus lápis. Ele pega cada lápis, faz uma cópia dele, mas com uma mudança que você escolhe.</p><br>
+            
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>array.map(elem => elem.toUpperCase())</p>
+            </div> <br>
+            <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputMap">
+            <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputMap()">Adicionar ao array</button>
+            <button id="mapbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-4" onclick="map()">Testar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+            <p id="arrayMap">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída:</span></p><br>
+                <p id="outputMap">[]</p> 
+            </div>
+        </div>
+
+
+
+        <div id="3" class="Reduce p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Reduce</h2>
+            <p>O método reduce() executa uma função reducer (fornecida por você) para cada elemento do array, resultando num único valor de retorno.</p> 
+            <br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>const soma = numeros.reduce((acumulador, valorAtual) => {return acumulador + valorAtual;}, 0);</p>
+            </div><br>
+            <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputReduce">
+            <button id="reducebutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputReduce()">Adicionar número ao array</button>
+            <button id="filterbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="reduce()">Testar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+            <p id="arrayReduce">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída:</span></p><br>
+                <p id="outputReduce">[]</p>
+            </div>
+        </div>
+
+
+
+        <div id="4" class="filter p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Filter</h2>
+            <p>O filter() é como um filtro mágico que você coloca na sua caixa de lápis. Ele olha para cada lápis e decide se ele deve ficar na caixa nova ou não, baseado em uma regra que você dá.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>const resultado = palavras.filter((palavra) => palavra.length > 6);</p>
+            </div> <br>
+            <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputFilter">
+            <button id="reducebutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputFilter()">Adicionar ao array</button>
+            <button id="findbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="filter()">Testar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+                <p id="arrayFilter">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída:</span></p><br>
+                <p id="outputFilter">[]</p>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="flex justify-between p-4 m-5 max-w-[1000px]" style="margin-inline: auto;">
+        <button class="bg-gray-500 p-2 font-bold rounded-lg outline outline-black hover:outline-dotted hover:bg-gray-300 cursor-pointer" onclick="back()" id="back" style="display: none;">Anterior</button>
+        <button class="bg-gray-500 p-2 font-bold rounded-lg outline outline-black hover:outline-dotted hover:bg-gray-300 cursor-pointer" onclick="forward()" id="forward">Próximo</button>
+    </div>
+    
+    <script src="./JS/script.js"></script>
+    <script src="./JS/functions.js"></script>
 </body>
-
 </html>
