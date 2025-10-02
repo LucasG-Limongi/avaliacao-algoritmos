@@ -11,30 +11,33 @@
 
 <body class="body p-4">
     
-    <div class="pb-10 relative h-[200px] flex flex-col items-center justify-center">
+    <div id="header" class="pb-10 relative h-[260px] flex flex-col items-center justify-center">
         <!-- <h1 class="text-center text-[3.85rem] font-bold text-black absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1> -->
 
-        <h1 class="text-center text-[3.56rem] font-extrabold text-black  absolute z-1 top-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
+        
         <!-- Como criar uma imagem cujo formato é o mesmo do texto no h1:
         <h1 class="text-center text-[3.85rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
         
         -->
-        <h1 class="text-center text-[3.709rem] leading-[85px] font-bold text-red-500 absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
+        <h1 id="titulo" class="text-center text-[3.709rem] leading-[85px] font-bold text-red-500 text-shadow-[2px_2px_0_black] absolute top-0 z-0">MÉTODOS DE ITERAÇÃO DE ARRAY</h1>
+
+        <div id='explicacao' class="absolute top-[190px] text-red-500">
+            <h2 class="font-bold">O que é um array?</h2>
+            <p>Em JavaScript, uma "array" é como uma caixa de lápis, e cada lápis é um "elemento" dentro dela.</p>
+        </div>
     </div>
 
     <div id="container" style="display: flex">
         <div id="1" class="forEach p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5 " style="display: block; margin-inline: auto;">
-            <h2 class="font-bold">O que é um array?</h2>
-            <p>Em JavaScript, uma "array" é como uma caixa de lápis, e cada lápis é um "elemento" dentro dela.</p>
-
-            <h3>ForEach</h3>
-            <p>Imagina que você quer dar um "oi" para cada um dos seus lápis. O forEach() faz exatamente isso! Ele pega cada lápis, um por um, e faz alguma coisa com ele.</p><br>
+            <h3 class="font-semibold">ForEach</h3>
+            <p>Imagina que você quer dar um "Olá" para cada um dos seus elementos. O forEach() faz exatamente isso! Ele pega cada elemento, um por um, e nesse caso dá olá a eles.</p><br>
             <div class="example min-w-[500px]">
-                <p><span class="font-semibold">Exemplo:</span><br>array.forEach(elem => {console.log(`Olá, ${elem}!`)</p>
+                <p><span class="font-semibold">Exemplo:</span><br>array.forEach(elem => {console.log(`Olá, ${elem}!`)})</p>
             </div> <br>
             <input type="text" placeholder="Experimente!" class="p-2 outline outline-black rounded-lg mr-3" id="inputForEach">
             <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputForEach()">Adicionar ao array</button>
-            <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mb-4" onclick="forEach()">Testar</button>
+            <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mb-4 mr-3" onclick="forEach()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayForEach'), document.getElementById('outputForEach'))">Limpar</button>
             <div class="example mb-5">
                 <p><span class="font-semibold">Array:</span></p><br>
             <p id="arrayForEach">[]</p>
@@ -49,17 +52,18 @@
 
         <div id="2" class="map p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
             <h2 class="font-bold">Map</h2>
-            <p>O map() é como uma máquina de fazer cópias especiais dos seus lápis. Ele pega cada lápis, faz uma cópia dele, mas com uma mudança que você escolhe.</p><br>
+            <p>O map() é como uma máquina de fazer cópias especiais dos seus elementos. Ele pega cada elemento, faz uma cópia dele, mas com uma mudança que você escolhe. Existe uma variação chamada flatMap(), que funciona como o map(), mas com um passo extra. Primeiro, ele aplica uma função de transformação a cada item do array (como o map() faz), mas depois ele "achata" o resultado. Exemplo: </p><br>
             
             <div class="example">
                 <p><span class="font-semibold">Exemplo:</span><br>array.map(elem => elem.toUpperCase())</p>
             </div> <br>
             <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputMap">
             <button id="forEachbutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputMap()">Adicionar ao array</button>
-            <button id="mapbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-4" onclick="map()">Testar</button>
+            <button id="mapbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-4 mr-3" onclick="map()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayMap'), document.getElementById('outputMap'))">Limpar</button>
             <div class="example mb-5">
                 <p><span class="font-semibold">Array:</span></p><br>
-            <p id="arrayMap">[]</p>
+                <p id="arrayMap">[]</p>
             </div>
             <div class="example mb-[10px]">
                 <p><span class="font-semibold">Saída:</span></p><br>
@@ -71,16 +75,17 @@
 
         <div id="3" class="Reduce p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
             <h2 class="font-bold">Reduce</h2>
-            <p>O método reduce() executa uma função reducer (fornecida por você) para cada elemento do array, resultando num único valor de retorno.</p> 
+            <p>O método reduce() executa uma função reducer (fornecida por você) para cada elemento do array, resultando num único valor de retorno. Existe uma variação chamada reduceRight(), que funciona do mesmo jeito que o reduce(), mas começa do fim do array, indo do último item até o primeiro, em vez de começar pelo início.</p> 
             <br>
             <div class="example">
                 <p><span class="font-semibold">Exemplo:</span><br>const soma = numeros.reduce((acumulador, valorAtual) => {return acumulador + valorAtual;}, 0);</p>
             </div><br>
             <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputReduce">
             <button id="reducebutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputReduce()">Adicionar número ao array</button>
-            <button id="filterbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="reduce()">Testar</button>
+            <button id="filterbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="reduce()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayReduce'), document.getElementById('outputReduce'))">Limpar</button>
             <div class="example mb-5">
-                <p><span class="font-semibold">Array:</span></p><br>
+            <p><span class="font-semibold">Array:</span></p><br>
             <p id="arrayReduce">[]</p>
             </div>
             <div class="example mb-[10px]">
@@ -99,7 +104,8 @@
             </div> <br>
             <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputFilter">
             <button id="reducebutton" class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputFilter()">Adicionar ao array</button>
-            <button id="findbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="filter()">Testar</button>
+            <button id="findbutton2" class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="filter()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayFilter'), document.getElementById('outputFilter'))">Limpar</button>
             <div class="example mb-5">
                 <p><span class="font-semibold">Array:</span></p><br>
                 <p id="arrayFilter">[]</p>
@@ -109,6 +115,166 @@
                 <p id="outputFilter">[]</p>
             </div>
         </div>
+
+        <div id="5" class="every p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Every</h2>
+            <p>O every() verifica se todos os itens de um array passam por uma condição. Se todos passarem, ele retorna true. Se apenas um falhar, retorna false.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>array.every(elem => elem > 0)</p>
+            </div><br>
+            <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputEvery">
+            <button class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputEvery()">Adicionar ao array</button>
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="every()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayEvery'), document.getElementById('outputEvery'))">Limpar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+                <p id="arrayEvery">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída:</span></p><br>
+                <p id="outputEvery"></p>
+            </div>
+        </div>
+        
+        <div id="6" class="some p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Some</h2>
+            <p>O some() verifica se algum item do array passa pela condição. Se encontrar pelo menos um, retorna true.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>array.some(elem => elem > 10)</p>
+            </div><br>
+            <input type="text" placeholder="Experimente" class="p-2 outline outline-black rounded-lg mr-3" id="inputSome">
+            <button class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputSome()">Adicionar ao array</button>
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="some()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arraySome'), document.getElementById('outputSome'))">Limpar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+                <p id="arraySome">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída:</span></p><br>
+                <p id="outputSome"></p>
+            </div>
+        </div>
+
+        <div id="7" class="from p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Array.from()</h2>
+            <p>O Array.from() transforma algo que <em>parece</em> um array (como uma string ou um NodeList) em um array de verdade.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>const letras = Array.from(string);</p>
+            </div><br>
+            <input type="text" placeholder="Digite uma string" class="p-2 outline outline-black rounded-lg mr-3" id="inputFrom">
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="testFrom()">Converter</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('outputFrom'))">Limpar</button>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Resultado:</span></p><br>
+                <p id="outputFrom">[]</p>
+            </div>
+        </div>
+        
+        <div id="8" class="keys p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">keys()</h2>
+            <p>O método keys() retorna um iterador com os índices (chaves) de cada item do array. Ele não retorna os valores, apenas as posições.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>const indices = [...array.keys()]</p>
+            </div><br>
+            <input type="text" placeholder="Digite um valor" class="p-2 outline outline-black rounded-lg mr-3" id="inputKeys">
+            <button class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputKeys()">Adicionar ao array</button>
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="testKeys()">Testar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+                <p id="arrayKeys">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída (índices):</span></p><br>
+                <p id="outputKeys">[]</p>
+            </div>
+        </div>        
+        
+        <div id="9" class="entries p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">entries()</h2>
+            <p>O método entries() retorna um iterador com pares [índice, valor] de cada item do array.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>const arrayFinal = array.entries(indice, novoValor)</p>
+            </div><br>
+            <input type="text" placeholder="Digite um valor" class="p-2 outline outline-black rounded-lg mr-3" id="inputEntries">
+            <button class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputEntries()">Adicionar ao array</button>
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="testEntries()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayEntries'), document.getElementById('outputEntries'))">Limpar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array:</span></p><br>
+                <p id="arrayEntries">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Saída (pares [índice, valor]):</span></p><br>
+                <p id="outputEntries">[]</p>
+            </div>
+        </div>
+        
+        <div id="10" class="with p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">with()</h2>
+            <p>O with() cria uma cópia do array, substituindo o valor em um índice específico. Ele não altera o original, e funciona de forma imutável. Requer suporte moderno do navegador (ES2023).</p><br>
+            
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>
+                const novoArray = array.with(indice, novoValor)</p>
+            </div><br>
+        
+            <input type="text" placeholder="Valor inicial (ex: 1,2,3)" class="p-2 outline outline-black rounded-lg mr-3" id="inputWithArray">
+            <input type="number" placeholder="Índice" class="p-2 outline outline-black rounded-lg mr-3 w-[90px]" id="inputWithIndex">
+            <input type="text" placeholder="Novo valor" class="p-2 outline outline-black rounded-lg mr-3 w-[120px]" id="inputWithValue">
+        
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="testWith()">Testar</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayWith'), document.getElementById('outputWith'))">Limpar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array original:</span></p><br>
+                <p id="arrayWith">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Novo array:</span></p><br>
+                <p id="outputWith">[]</p>
+            </div>
+        </div>
+
+        <div id="11" class="spread p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Operador Spread (...)</h2>
+            <p>O operador ... (spread) permite espalhar os elementos de um array em outro local — seja dentro de outro array, como argumentos de função ou em objetos.</p><br>
+            
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>
+                const arrayFinal = [...array1, valor] // ou [...array1, ...array2] se houver mais de uma array</p>
+            </div><br>
+            <input type="text" placeholder="Array base (ex: 1,2)" class="p-2 outline outline-black rounded-lg mr-3" id="inputSpreadArray">
+            <input type="text" placeholder="Valor adicional (ex: 3)" class="p-2 outline outline-black rounded-lg mr-3" id="inputSpreadValue">
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="testSpread()">Testar Spread</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arraySpread'), document.getElementById('outputSpread'))">Limpar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Array original:</span></p><br>
+                <p id="arraySpread">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Novo array (com spread):</span></p><br>
+                <p id="outputSpread">[]</p>
+            </div>
+        </div>
+        
+        <div id="12" class="rest p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
+            <h2 class="font-bold">Operador Rest (...)</h2>
+            <p>O operador ... (rest) junta múltiplos argumentos ou valores restantes em um array. Muito usado em funções com número indefinido de argumentos.</p><br>
+            <div class="example">
+                <p><span class="font-semibold">Exemplo:</span><br>const [a, ...resto] = [1, 2, 3, 4] // a = 1 e resto = [2, 3, 4] </p>
+            </div><br>
+            <input type="text" placeholder="Números (ex: 1,2,3)" class="p-2 outline outline-black rounded-lg mr-3" id="inputRest">
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="testRest()">Somar com Rest</button>
+            <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayRest'), document.getElementById('outputRest'))">Limpar</button>
+            <div class="example mb-5">
+                <p><span class="font-semibold">Argumentos recebidos:</span></p><br>
+                <p id="arrayRest">[]</p>
+            </div>
+            <div class="example mb-[10px]">
+                <p><span class="font-semibold">Resultado da soma:</span></p><br>
+                <p id="outputRest">0</p>
+            </div>
+        </div>        
     </div>
 
     <div class="flex justify-between p-4 m-5 max-w-[1000px]" style="margin-inline: auto;">

@@ -1,3 +1,25 @@
+function atualizarLayout() {
+    const titulo = document.getElementById('titulo');
+    const explicacao = document.getElementById('explicacao');
+    const header = document.getElementById('header');
+
+    // Alturas reais dos elementos
+    const alturaTitulo = titulo.offsetHeight;
+    const alturaExplicacao = explicacao.offsetHeight;
+
+    // Define a altura do header (pode somar uma margem extra se quiser)
+    const alturaTotal = alturaTitulo + alturaExplicacao + 200; // 50px de margem extra
+
+    header.style.height = `${alturaTotal}px`;
+
+    // Também atualiza a posição da explicação como antes
+    explicacao.style.position = 'relative'; // ou absolute, dependendo do layout
+    explicacao.style.top = `${alturaTitulo + 20}px`; // separa visualmente do título
+}
+
+// Recalcula no carregamento e no redimensionamento
+window.addEventListener('load', atualizarLayout);
+window.addEventListener('resize', atualizarLayout);
 
 let divAtual = '1'
 
@@ -5,7 +27,7 @@ let divAtual = '1'
 
 function forward() {
     let slide;
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 12; i++) {
         const container = document.getElementById(i.toString());
         if (container.style.display === 'block') {
             slide = container
@@ -31,7 +53,7 @@ function forward() {
     if (parseInt(nextID) >= 2) {
         document.getElementById('back').style.display = 'block'
     }
-    if (parseInt(nextID) === 4) {
+    if (parseInt(nextID) === 12) {
         document.getElementById('forward').style.display = 'none'
     }
     divAtual = nextID
@@ -39,7 +61,7 @@ function forward() {
 
 function back() {
     let slide;
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 12; i++) {
         const container = document.getElementById(i.toString());
         if (container.style.display === 'block') {
             slide = container;
@@ -62,7 +84,7 @@ function back() {
             cont.style.width = '100%'
         }, 500);
     }
-    if (parseInt(prevID) <= 4) {
+    if (parseInt(prevID) <= 12) {
         document.getElementById('forward').style.display = 'block';
     }
     if (parseInt(prevID) === 1) {
@@ -79,12 +101,28 @@ const container1 = document.getElementById('container')
 
 container1.addEventListener('keydown', function (e) {
     console.log(e.target)
-    
+
     // pegar o próximo button vizinho a partir do e.target
     const button = e.target.nextElementSibling
-    
+
     if (e.key === 'Enter') {
         button.click()
     }
 })
 
+var podeSeguir = true
+document.addEventListener('keydown', function (e) {
+    if (podeSeguir) {
+        podeSeguir = false
+        if (e.key === 'ArrowRight') {
+            forward()
+        }
+        if (e.key === 'ArrowLeft') {
+            back()
+        }
+        setTimeout(() => {
+            podeSeguir = true
+        }, 500)
+    }
+}
+)
