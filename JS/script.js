@@ -1,26 +1,3 @@
-function atualizarLayout() {
-    const titulo = document.getElementById('titulo');
-    const explicacao = document.getElementById('explicacao');
-    const header = document.getElementById('header');
-
-    // Alturas reais dos elementos
-    const alturaTitulo = titulo.offsetHeight;
-    const alturaExplicacao = explicacao.offsetHeight;
-
-    // Define a altura do header (pode somar uma margem extra se quiser)
-    const alturaTotal = alturaTitulo + alturaExplicacao + 200; // 50px de margem extra
-
-    header.style.height = `${alturaTotal}px`;
-
-    // Também atualiza a posição da explicação como antes
-    explicacao.style.position = 'relative'; // ou absolute, dependendo do layout
-    explicacao.style.top = `${alturaTitulo + 20}px`; // separa visualmente do título
-}
-
-// Recalcula no carregamento e no redimensionamento
-window.addEventListener('load', atualizarLayout);
-window.addEventListener('resize', atualizarLayout);
-
 let divAtual = '1'
 
 // não está funcionando pois o evento keydown não está sendo capturado porque o foco está no input dentro do container. Para resolver, adicionei um event listener ao container que verifica se a tecla pressionada é 'Enter' e se o foco está no input do slide atual. Se sim, ele simula um clique no botão correspondente.
