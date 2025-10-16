@@ -4,8 +4,6 @@ function limpar(elem1, elem2) {
     // forEach Every Some
     if (elem2.id == 'outputForEach' || elem2.id == 'outputEvery' || elem2.id == 'outputSome') {
         elem2.innerHTML = ''
-    } else if (elem2.id == 'outputRest') {
-        elem2.innerHTML = '2'
     } else {
         elem2.innerHTML = '[]'
     }
@@ -283,11 +281,10 @@ function testSpread() {
 
 function testRest() {
     const input = document.getElementById('inputRest').value
-        .split(',')
-        .map(e => Number(e.trim()));
+        .split(', ');
 
-    const sum = input.reduce((acc, curr) => acc + curr, 0);
+    const resto = `[${input.slice(1).map(e => `"${e}"`).join(', ')}]`;
 
     document.getElementById('arrayRest').innerText = `[${input.join(', ')}]`;
-    document.getElementById('outputRest').innerText = sum.toString();
+    document.getElementById('outputRest').innerText = resto.toString();
 }

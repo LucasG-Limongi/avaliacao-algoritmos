@@ -53,8 +53,7 @@
 
         <div id="2" class="map p-4 m-5 bg-red-400 shadow-2xl rounded-xl w-full max-w-[1000px] pl-5" style="display: none; margin-inline: auto;">
             <h2 class="font-bold">Map</h2>
-            <p>O map() é como uma máquina de fazer cópias especiais dos seus elementos. Ele pega cada elemento, faz uma cópia dele, mas com uma mudança que você escolhe. Existe uma variação chamada flatMap(), que funciona como o map(), mas com um passo extra. Primeiro, ele aplica uma função de transformação a cada item do array (como o map() faz), mas depois ele "achata" o resultado. Exemplo: </p><br>
-            
+            <p>O map() é como uma máquina de fazer cópias especiais dos seus elementos. Ele pega cada elemento, faz uma cópia dele, mas com uma mudança que você escolhe. Existe uma variação chamada flatMap(), que funciona como o map(), mas com um passo extra. Primeiro, ele aplica uma função de transformação a cada item do array (como o map() faz), mas depois ele "achata" o resultado. Exemplo: [["12", "35"]["54"]].flatMap(elem => Number(elem)) -> [12, 35, 54] // ao invés de [[12, 35][54]]</p><br>
             <div class="example">
                 <p><span class="font-semibold">Exemplo:</span><br>array.map(elem => elem.toUpperCase())</p>
             </div> <br>
@@ -195,7 +194,7 @@
             <h2 class="font-bold">entries()</h2>
             <p>O método entries() retorna um iterador com pares [índice, valor] de cada item do array.</p><br>
             <div class="example">
-                <p><span class="font-semibold">Exemplo:</span><br>const arrayFinal = array.entries(indice, novoValor)</p>
+                <p><span class="font-semibold">Exemplo:</span><br>const arrayFinal = array.entries()</p>
             </div><br>
             <input type="text" placeholder="Digite um valor" class="p-2 outline outline-black rounded-lg mr-3" id="inputEntries">
             <button class="bg-slate-300 p-2 rounded-lg outline mr-3" onclick="inputEntries()">Adicionar ao array</button>
@@ -242,11 +241,11 @@
             
             <div class="example">
                 <p><span class="font-semibold">Exemplo:</span><br>
-                const arrayFinal = [...array1, valor] // ou [...array1, ...array2] se houver mais de uma array</p>
+                const arrayFinal = [...array1, valor] // ou [...array1, ...array2] quando houver mais de uma array</p>
             </div><br>
             <input type="text" placeholder="Array base (ex: 1,2)" class="p-2 outline outline-black rounded-lg mr-3" id="inputSpreadArray">
             <input type="text" placeholder="Valor adicional (ex: 3)" class="p-2 outline outline-black rounded-lg mr-3" id="inputSpreadValue">
-            <button class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="testSpread()">Testar Spread</button>
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="testSpread()">Testar Spread</button>
             <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arraySpread'), document.getElementById('outputSpread'))">Limpar</button>
             <div class="example mb-5">
                 <p><span class="font-semibold">Array original:</span></p><br>
@@ -265,15 +264,15 @@
                 <p><span class="font-semibold">Exemplo:</span><br>const [a, ...resto] = [1, 2, 3, 4] // a = 1 e resto = [2, 3, 4] </p>
             </div><br>
             <input type="text" placeholder="Números (ex: 1,2,3)" class="p-2 outline outline-black rounded-lg mr-3" id="inputRest">
-            <button class="bg-slate-300 p-2 rounded-lg outline mb-2" onclick="testRest()">Somar com Rest</button>
+            <button class="bg-slate-300 p-2 rounded-lg outline mb-2 mr-3" onclick="testRest()">Testar Rest</button>
             <button class="limpar bg-slate-300 p-2 rounded-lg outline mb-4" onclick="limpar(document.getElementById('arrayRest'), document.getElementById('outputRest'))">Limpar</button>
             <div class="example mb-5">
                 <p><span class="font-semibold">Argumentos recebidos:</span></p><br>
                 <p id="arrayRest">[]</p>
             </div>
             <div class="example mb-[10px]">
-                <p><span class="font-semibold">Resultado da soma:</span></p><br>
-                <p id="outputRest">0</p>
+                <p><span class="font-semibold">Resto:</span></p><br>
+                <p id="outputRest">[]</p>
             </div>
         </div>        
     </div>
